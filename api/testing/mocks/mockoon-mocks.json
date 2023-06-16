@@ -1,20 +1,22 @@
 {
-  "uuid": "5034c4dd-6971-443a-a46a-c845f31a7017",
-  "lastMigration": 20,
+  "uuid": "a4e860f5-9438-4951-b572-8ce62fcdfd8d",
+  "lastMigration": 27,
   "name": "QueerGlobal Person API",
   "endpointPrefix": "api",
   "latency": 0,
-  "port": 3005,
-  "hostname": "0.0.0.0",
+  "port": 3004,
+  "hostname": "",
+  "folders": [],
   "routes": [
     {
-      "uuid": "963d4387-a4fa-4a8a-9470-3fc36ec63a8e",
+      "uuid": "e7938a67-b098-4411-bbcc-fdeb895d2fbd",
+      "type": "http",
       "documentation": "Healthcheck for this API",
       "method": "get",
       "endpoint": "healthcheck",
       "responses": [
         {
-          "uuid": "bafeb521-3ff7-4bde-a31a-a325dc1d1547",
+          "uuid": "32e224b6-1768-4cb1-afcc-b470063f15fe",
           "body": "[\n  {\n    \"status\": \"\",\n    \"serviceName\": \"\"\n  }\n]",
           "latency": 0,
           "statusCode": 200,
@@ -25,7 +27,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -34,7 +38,7 @@
           "default": true
         },
         {
-          "uuid": "76e30cf0-b46c-418e-841e-0f4093e2849c",
+          "uuid": "0832d8f4-28a6-46ae-bc05-398cf1eb3733",
           "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -45,7 +49,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -55,18 +61,18 @@
         }
       ],
       "enabled": true,
-      "randomResponse": false,
-      "sequentialResponse": false
+      "responseMode": null
     },
     {
-      "uuid": "f3c9ede7-f0e8-4ad1-b157-7c935909f986",
+      "uuid": "0df01b68-ad3f-4440-91da-810f31a0fcf1",
+      "type": "http",
       "documentation": "Returns a person by ID",
       "method": "get",
       "endpoint": "person/:id",
       "responses": [
         {
-          "uuid": "39d250d6-4dbe-42f6-98d1-5780370a7ea2",
-          "body": "{\n  \"userName\": \"\",\n  \"personID\": {{faker 'datatype.number'}},\n  \"firstName\": \"\",\n  \"lastName\": \"\",\n  \"location\": {\n    \"StreetAddressLines\": \"\",\n    \"Country\": \"\",\n    \"AdminstrativeArea\": \"\",\n    \"Locality\": \"\",\n    \"Lat\": {{faker 'datatype.number'}},\n    \"Long\": {{faker 'datatype.number'}}\n  },\n  \"socialLinks\": [\n    {\n      \"serviceName\": \"\",\n      \"linkToService\": \"\",\n      \"handle\": \"\"\n    }\n  ],\n  \"chips\": [\n    {\n      \"id\": {{faker 'datatype.number'}},\n      \"value\": \"\"\n    }\n  ]\n}",
+          "uuid": "76040ae8-5c8d-4dfb-892e-f7d6fbf563ba",
+          "body": "{\n  \"userName\": \"{{urlParam 'id'}}\",\n  \"firstName\": \"\",\n  \"lastName\": \"\",\n  \"locationID\": \"{{faker 'datatype.uuid'}}\",\n  \"socialLinks\": [\n    {\n      \"serviceName\": \"\",\n      \"linkToService\": \"\",\n      \"handle\": \"\"\n    }\n  ],\n  \"chips\": [\n    {\n      \"id\": \"{{faker 'datatype.uuid'}}\",\n      \"value\": \"\"\n    }\n  ]\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "person response",
@@ -76,7 +82,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -85,7 +93,7 @@
           "default": true
         },
         {
-          "uuid": "7d399d49-12ad-4f10-b407-70a6a402a68e",
+          "uuid": "c8a16be0-397f-4a74-9ee9-5c42054b1e0d",
           "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -96,7 +104,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -106,17 +116,17 @@
         }
       ],
       "enabled": true,
-      "randomResponse": false,
-      "sequentialResponse": false
+      "responseMode": null
     },
     {
-      "uuid": "5d527d93-91d0-4f68-a43d-c580d13dd23c",
+      "uuid": "fa815f8b-55c0-4730-9079-ebc553dc4301",
+      "type": "http",
       "documentation": "Deletes a person by ID",
       "method": "delete",
       "endpoint": "person/:id",
       "responses": [
         {
-          "uuid": "4ea69c03-e9d9-45b0-8668-1ed927a90acb",
+          "uuid": "0cd57755-3058-482c-bca3-4e1614dad53a",
           "body": "",
           "latency": 0,
           "statusCode": 204,
@@ -127,7 +137,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -136,7 +148,7 @@
           "default": true
         },
         {
-          "uuid": "e6faab03-097c-461a-a78d-822325dea10c",
+          "uuid": "76802c65-8758-4e2c-a9d9-5aabb626c100",
           "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -147,7 +159,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -157,18 +171,18 @@
         }
       ],
       "enabled": true,
-      "randomResponse": false,
-      "sequentialResponse": false
+      "responseMode": null
     },
     {
-      "uuid": "6ddef086-3654-444d-8b36-54e2c8ae5d51",
+      "uuid": "c037eec9-5400-4c5a-abd2-1234e6b55fee",
+      "type": "http",
       "documentation": "Update a person",
       "method": "put",
       "endpoint": "person/:id",
       "responses": [
         {
-          "uuid": "6da52204-6c26-4684-906d-b5b6e09b64e1",
-          "body": "{\n  \"userName\": \"\",\n  \"personID\": {{faker 'datatype.number'}},\n  \"firstName\": \"\",\n  \"lastName\": \"\",\n  \"location\": {\n    \"StreetAddressLines\": \"\",\n    \"Country\": \"\",\n    \"AdminstrativeArea\": \"\",\n    \"Locality\": \"\",\n    \"Lat\": {{faker 'datatype.number'}},\n    \"Long\": {{faker 'datatype.number'}}\n  },\n  \"socialLinks\": [\n    {\n      \"serviceName\": \"\",\n      \"linkToService\": \"\",\n      \"handle\": \"\"\n    }\n  ],\n  \"chips\": [\n    {\n      \"id\": {{faker 'datatype.number'}},\n      \"value\": \"\"\n    }\n  ]\n}",
+          "uuid": "f15b95a1-8dc8-4258-8ab0-6a473d113089",
+          "body": "{\n  \"userName\": \"{{urlParam 'id'}}\",\n  \"firstName\": \"\",\n  \"lastName\": \"\",\n  \"locationID\": \"{{faker 'datatype.uuid'}}\",\n  \"socialLinks\": [\n    {\n      \"serviceName\": \"\",\n      \"linkToService\": \"\",\n      \"handle\": \"\"\n    }\n  ],\n  \"chips\": [\n    {\n      \"id\": \"{{faker 'datatype.uuid'}}\",\n      \"value\": \"\"\n    }\n  ]\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "person",
@@ -178,7 +192,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -187,7 +203,7 @@
           "default": true
         },
         {
-          "uuid": "21ca2dc1-6d26-4094-b91c-dd2cb1eba7b9",
+          "uuid": "d2b69e3f-199d-46c2-81da-3cbc4594a5e5",
           "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -198,7 +214,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -208,18 +226,18 @@
         }
       ],
       "enabled": true,
-      "randomResponse": false,
-      "sequentialResponse": false
+      "responseMode": null
     },
     {
-      "uuid": "5e87eeb2-f1db-4375-bec2-ed3f8d95f291",
+      "uuid": "32ca7d56-c791-4b52-8021-31b5163e5afe",
+      "type": "http",
       "documentation": "Creates a new person",
       "method": "post",
       "endpoint": "person",
       "responses": [
         {
-          "uuid": "c4125826-cf9e-4b65-811b-847b14b4fc2e",
-          "body": "{\n  \"userName\": \"\",\n  \"personID\": {{faker 'datatype.number'}},\n  \"firstName\": \"\",\n  \"lastName\": \"\",\n  \"location\": {\n    \"StreetAddressLines\": \"\",\n    \"Country\": \"\",\n    \"AdminstrativeArea\": \"\",\n    \"Locality\": \"\",\n    \"Lat\": {{faker 'datatype.number'}},\n    \"Long\": {{faker 'datatype.number'}}\n  },\n  \"socialLinks\": [\n    {\n      \"serviceName\": \"\",\n      \"linkToService\": \"\",\n      \"handle\": \"\"\n    }\n  ],\n  \"chips\": [\n    {\n      \"id\": {{faker 'datatype.number'}},\n      \"value\": \"\"\n    }\n  ]\n}",
+          "uuid": "44ff7f31-7e92-411b-a13d-a9c2a34f0aa0",
+          "body": "{\n  \"userName\": \"\",\n  \"firstName\": \"\",\n  \"lastName\": \"\",\n  \"locationID\": \"{{faker 'datatype.uuid'}}\",\n  \"socialLinks\": [\n    {\n      \"serviceName\": \"\",\n      \"linkToService\": \"\",\n      \"handle\": \"\"\n    }\n  ],\n  \"chips\": [\n    {\n      \"id\": \"{{faker 'datatype.uuid'}}\",\n      \"value\": \"\"\n    }\n  ]\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "person",
@@ -229,7 +247,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -238,7 +258,7 @@
           "default": true
         },
         {
-          "uuid": "cb2a1c10-6567-447a-8fc4-de3ff6192fd9",
+          "uuid": "e49b4914-913f-4b33-adba-3b58188747b3",
           "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -249,7 +269,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -259,18 +281,18 @@
         }
       ],
       "enabled": true,
-      "randomResponse": false,
-      "sequentialResponse": false
+      "responseMode": null
     },
     {
-      "uuid": "8704d044-ca94-4397-b47a-e55c99bd6da9",
+      "uuid": "216c312c-77e9-4801-9188-f19cfc6f2965",
+      "type": "http",
       "documentation": "Returns person based on query string",
       "method": "get",
       "endpoint": "person",
       "responses": [
         {
-          "uuid": "73141995-c82a-4b5f-8a71-fdc8e8eebd65",
-          "body": "[\n  {\n    \"userName\": \"\",\n    \"personID\": {{faker 'datatype.number'}},\n    \"firstName\": \"\",\n    \"lastName\": \"\",\n    \"location\": {\n      \"StreetAddressLines\": \"\",\n      \"Country\": \"\",\n      \"AdminstrativeArea\": \"\",\n      \"Locality\": \"\",\n      \"Lat\": {{faker 'datatype.number'}},\n      \"Long\": {{faker 'datatype.number'}}\n    },\n    \"socialLinks\": [\n      {\n        \"serviceName\": \"\",\n        \"linkToService\": \"\",\n        \"handle\": \"\"\n      }\n    ],\n    \"chips\": [\n      {\n        \"id\": {{faker 'datatype.number'}},\n        \"value\": \"\"\n      }\n    ]\n  }\n]",
+          "uuid": "e3bcfc20-d7ea-4c53-ab06-e739b31c7e6c",
+          "body": "[\n  {\n    \"userName\": \"\",\n    \"firstName\": \"\",\n    \"lastName\": \"\",\n    \"locationID\": \"{{faker 'datatype.uuid'}}\",\n    \"socialLinks\": [\n      {\n        \"serviceName\": \"\",\n        \"linkToService\": \"\",\n        \"handle\": \"\"\n      }\n    ],\n    \"chips\": [\n      {\n        \"id\": \"{{faker 'datatype.uuid'}}\",\n        \"value\": \"\"\n      }\n    ]\n  }\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "person response",
@@ -280,7 +302,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -289,7 +313,7 @@
           "default": true
         },
         {
-          "uuid": "4419f235-631a-490d-a0a3-6107720a205c",
+          "uuid": "326a900b-56cd-4f40-88da-38ef77bdcab1",
           "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -300,7 +324,9 @@
               "value": "application/json"
             }
           ],
+          "bodyType": "INLINE",
           "filePath": "",
+          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -310,8 +336,33 @@
         }
       ],
       "enabled": true,
-      "randomResponse": false,
-      "sequentialResponse": false
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "e7938a67-b098-4411-bbcc-fdeb895d2fbd"
+    },
+    {
+      "type": "route",
+      "uuid": "0df01b68-ad3f-4440-91da-810f31a0fcf1"
+    },
+    {
+      "type": "route",
+      "uuid": "fa815f8b-55c0-4730-9079-ebc553dc4301"
+    },
+    {
+      "type": "route",
+      "uuid": "c037eec9-5400-4c5a-abd2-1234e6b55fee"
+    },
+    {
+      "type": "route",
+      "uuid": "32ca7d56-c791-4b52-8021-31b5163e5afe"
+    },
+    {
+      "type": "route",
+      "uuid": "216c312c-77e9-4801-9188-f19cfc6f2965"
     }
   ],
   "proxyMode": false,
@@ -339,5 +390,6 @@
       "key": "",
       "value": ""
     }
-  ]
+  ],
+  "data": []
 }

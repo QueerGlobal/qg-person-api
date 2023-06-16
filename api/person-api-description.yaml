@@ -70,8 +70,7 @@ paths:
           description: ID of person to delete
           required: true
           schema:
-            type: integer
-            format: int64
+            type: string
       responses:
         '204':
           description: person deleted
@@ -92,8 +91,7 @@ paths:
           description: ID of person to delete
           required: true
           schema:
-            type: integer
-            format: int64
+            type: string
       requestBody:
         description: Person to update to the page
         required: true
@@ -152,8 +150,7 @@ paths:
           description: ID of user to fetch
           required: false
           schema:
-            type: integer
-            format: int64
+            type: string
 
       responses:
         '200':
@@ -190,19 +187,17 @@ components:
         - personID
         - firstName
         - lastName
+        - locationID
       properties:
         userName:
           type: string
-        personID:
-          type: integer
-          format: int64
         firstName:
           type: string
         lastName:
           type: string
-        location:
-          type: object
-          $ref: '#/components/schemas/Location'
+        locationID:
+          type: string
+          format: uuid
         socialLinks:
           type: array
           items:
@@ -217,8 +212,8 @@ components:
         - value
       properties:
         id:
-          type: number
-          format: int64
+          type: string
+          format: uuid
         value:
           type: string
 
@@ -234,34 +229,6 @@ components:
           type: string
         handle:
           type: string
-
-    Location:
-      required:
-        - StreetAddressLines
-        - Country
-        - AdministrativeArea
-        - Locality
-        - Latitude
-        - Longitude
-      properties:
-        StreetAddressLines:
-          type: string
-          description: Street Address Lines combined into a single field
-        Country:
-          type: string
-          description: Country Code
-        AdminstrativeArea:
-          type: string
-          description: Adminstrative Area (in US, for example, a State)
-        Locality:
-          type: string
-          description: Tha name of the locality. In the US, the city or town
-        Lat:
-          type: number
-          description: Degrees latitude of the location
-        Long:
-          type: number
-          description: Degrees longitude of the location
 
     Error:
       required:
