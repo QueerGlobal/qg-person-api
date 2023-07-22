@@ -184,7 +184,6 @@ components:
     Person:
       required:
         - userName
-        - personID
         - firstName
         - lastName
         - locationID
